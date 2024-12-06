@@ -1,0 +1,104 @@
+
+
+/* Slider container */
+.slider-container {
+
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto; /* Center the slider */
+}
+
+.slider-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Slider dots (point indicators) */
+.slider-dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #c08e8e;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #ff7f50; /* Active dot color */
+}
+
+.dot:hover {
+  background-color: #ff7f50; /* Change dot color on hover */
+}
+
+
+
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  background-size: cover;
+  background-position: center center;
+  background-color: #f9f9f9; /* Fallback background color */
+}
+  h1 {
+    margin-bottom: 2rem;
+    font-size: 2rem; /* Base font size */
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  
+  h1 span {
+    color: #f97316; /* Orange color for emphasis */
+  }
+  
+  .link-button {
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    border-radius: 0.375rem; /* Rounded corners */
+    background-color: #f97316; /* Orange color */
+    color: #ffffff; /* White text */
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .link-button:hover {
+    background-color: #ea580c; /* Darker orange on hover */
+  }
+  
+  /* Responsive typography */
+  @media (min-width: 640px) {
+    h1 {
+      font-size: 2.5rem; /* Larger font size for small screens */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem; /* Larger font size for medium screens */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 3.5rem; /* Larger font size for large screens */
+    }
+  }
+  
