@@ -47,7 +47,7 @@ const TestimonialsSection = () => {
             <li key={index} className="bg-white p-4 md:p-6 shadow-lg rounded w-full md:w-80">
               <div className="flex items-center mb-4">
                 <img
-                  src={`/assets/aviraj.jpg`}
+                  src={`/assets/aviraj1.jpg`}
                   alt={`Customer ${index}`}
                   className="w-20 h-20 rounded-full mr-4 object-cover"
                 />
