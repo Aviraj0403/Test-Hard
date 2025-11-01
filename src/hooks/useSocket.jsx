@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 
-const useSocket = (onMessage) => {
+const useSocket = (onMessage, url = 'https://apirestaurant.bytethard.com') => {
     const socketRef = useRef(null);
 
     useEffect(() => {
         // Create the socket connection
-        socketRef.current = io('http://localhost:4000', {
-            transports: ['websocket'], // Use websocket transport
+        socketRef.current = io(url, {
+            transports: ['websocket', 'polling'], // Use websocket transport
             reconnection: true,        // Enable reconnection
             reconnectionAttempts: 5,   // Number of reconnection attempts
             reconnectionDelay: 1000,   // Delay between reconnection attempts
@@ -28,9 +28,10 @@ const useSocket = (onMessage) => {
 
         // Cleanup on unmount
         return () => {
-            socketRef.current.disconnect();
+            socketRef.current.off('message', onMessage); // Unsubscribe from the 'message' event
+            socketRef.current.disconnect(); // Disconnect the socket
         };
-    }, [onMessage]);
+    }, [onMessage, url]);
 
     return socketRef.current; // Return the socket instance if needed
 };
