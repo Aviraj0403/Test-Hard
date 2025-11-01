@@ -1,9 +1,10 @@
+// pages/Menu.jsx
 import React, { useState, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import MenuItem from './MenuItem.jsx';
-import FoodCategoryFilter from './FilterFood.jsx';
-import { getMenu } from '../../services/apiRestaurant.js';
-import Header from '../../components/Header/Header.jsx';
+import MenuItem from './MenuItem';
+import FoodCategoryFilter from './FilterFood';
+import { getMenu } from '../../services/apiRestaurant';
+import Header from '../../components/Header/Header';
 
 const Menu = () => {
   const initialMenuData = useLoaderData();
@@ -19,8 +20,7 @@ const Menu = () => {
       setMenu(initialMenuData);
       setFilteredMenu(initialMenuData);
     } else {
-      console.error('Invalid menu data:', initialMenuData);
-      setMenu([]); // Set to empty array if data is invalid
+      setMenu([]);
       setFilteredMenu([]);
     }
     setLoading(false);
@@ -29,19 +29,16 @@ const Menu = () => {
   useEffect(() => {
     let filtered = menu;
 
-    // Filter by category
     if (selectedCategory !== 'All') {
-      filtered = filtered.filter(item => item.category === selectedCategory);
+      filtered = filtered.filter((item) => item.category === selectedCategory);
     }
 
-    // Filter by food type
     if (foodType !== 'All') {
-      filtered = filtered.filter(item => item.itemType === foodType);
+      filtered = filtered.filter((item) => item.itemType === foodType);
     }
 
-    // Filter by search query
     if (searchQuery) {
-      filtered = filtered.filter(item =>
+      filtered = filtered.filter((item) =>
         item.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
@@ -54,22 +51,25 @@ const Menu = () => {
     setFoodType(type);
   };
 
-  if (loading) {
-    return <p>Loading menu...</p>;
-  }
+  if (loading) return <p className="text-center py-10">Loading menu...</p>;
 
   return (
-    <div className='menu-page'>
+    <div className="menu-page min-h-screen">
       <Header setSearchQuery={setSearchQuery} />
       <FoodCategoryFilter onCategoryChange={handleCategoryChange} />
-      <div className="card-div mt-2 mb-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 border-t border-gray-300 pt-2 pb-4">
-        {filteredMenu.length > 0 ? (
-          filteredMenu.map(item => (
-            <MenuItem key={item._id} fooditem={item} />
-          ))
-        ) : (
-          <p>No items found</p>
-        )}
+
+      <div className="container mx-auto px-4 py-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+          {filteredMenu.length > 0 ? (
+            filteredMenu.map((item) => (
+              <MenuItem key={item._id} fooditem={item} />
+            ))
+          ) : (
+            <p className="col-span-full text-center text-gray-500 py-10">
+              No items found
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -78,8 +78,8 @@ const Menu = () => {
 export async function loader() {
   try {
     const menu = await getMenu();
-    console.log('Fetched menu data:', menu);
-    return menu;
+    console.log('Menu data loaded:', menu);
+    return menu || [];
   } catch (error) {
     console.error('Error loading menu:', error);
     return [];

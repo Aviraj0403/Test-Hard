@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import "./index.css";
 
 import { Provider } from "react-redux";
-import { store, persistor } from "./store.js"; // Import the store and persistor
+import { store, persistor } from "./store/store.js"; // Import the store and persistor
 import { PersistGate } from 'redux-persist/integration/react'; // Import PersistGate
 
 // Registering Service Worker

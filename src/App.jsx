@@ -1,10 +1,9 @@
-// src/App.js
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { restoreOrders } from './pages/order/orderSlice'; // Adjust the path as necessary
 import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './store'; 
+import { store, persistor } from './store/store.js'; 
 import { RouterProvider } from "react-router-dom";
 import router from "./Router/Router.jsx"; 
 import Footer from "./components/Footer/footer.jsx"; 

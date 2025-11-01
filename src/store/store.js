@@ -3,13 +3,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';  // defaults to localStorage for web
 import { combineReducers } from '@reduxjs/toolkit';
-import userSlice from './pages/user/userSlice';
-import cartSlice from './pages/cart/cartSlice';
-import orderSlice from './pages/order/orderSlice';
-import foodSlice from './pages/Slice/FoodSlice';
-import offerSlice from './pages/Slice/OfferSlice';
-import tableSlice from './pages/Slice/TableSlice';
-import restaurantSlice from './pages/Slice/RestaurantSlice';  // Import the restaurantSlice
+import userSlice from '../pages/user/userSlice';
+import cartSlice from '../pages/cart/cartSlice';
+import orderSlice from '../pages/order/orderSlice';
+import foodSlice from '../pages/Slice/FoodSlice';
+import offerSlice from '../pages/Slice/OfferSlice';
+import tableSlice from '../pages/Slice/TableSlice';
+import restaurantSlice from '../pages/Slice/RestaurantSlice';  // Import the restaurantSlice
 
 // Persist configuration
 const persistConfig = {

@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="container">
           <div className="footer-brand">
             <a href="#" className="logo">
-              Br Tech<span className="span">.</span>
+              Demo Restaurant<span className="span">.</span>
             </a>
             <p className="footer-text">
               Financial experts support or help you to find out which way you
@@ -82,7 +82,7 @@ const Footer = () => {
       <div className="footer-bottom">
         <div className="container">
           <p className="copyright-text">
-            &copy; 2024 <a href="#" className="copyright-link">Br Tech</a> All Rights Reserved.
+            &copy; 2025 <a href="#" className="copyright-link">IT Teams</a> All Rights Reserved.
           </p>
         </div>
       </div>

@@ -84,7 +84,7 @@ const Header = ({ setSearchQuery }) => {
             <FaUtensils style={{ fontSize: "2.5rem", color: trigger ? "#FBBF24" : "#FB923C" }} />
             <Box sx={{ display: "flex", flexDirection: "column", ml: 1 }}>
               <Typography variant="h6" component="h1" sx={{ fontWeight: "bold", color: trigger ? "#FBBF24" : "#FB923C" }}>
-                BR Tech
+                Demo Restaurant
               </Typography>
               <Username sx={{ mt: 0.5, fontSize: "0.75rem", color: trigger ? "#fff" : "#111" }} />
             </Box>

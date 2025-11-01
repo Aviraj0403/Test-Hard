@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css'; // Import Swiper styles
@@ -53,18 +52,14 @@ function FoodCategoryFilter({ onCategoryChange }) {
 
   const handleCategoryClick = async (category) => {
     if (category === 'All') {
-      // Immediately reset both foodType and category to 'All'
       setSelectedCategory('All');
       setFoodType('All');
-
-      // Immediately trigger onCategoryChange with 'All' values
       try {
         await onCategoryChange('All', 'All');
       } catch (error) {
         console.error('Error resetting category and food type:', error);
       }
     } else {
-      // If not 'All', set the selected category only
       setSelectedCategory(category);
       try {
         await onCategoryChange(category, foodType);
@@ -89,61 +84,55 @@ function FoodCategoryFilter({ onCategoryChange }) {
 
   return (
     <div className="category-div mb-7">
-      <div className="background-div flex flex-wrap gap-3 w-full mb-5 py-4 veg-navs border-b border-gray-200 pb-3 shadow-lg rounded-lg bg-gradient-to-r from-blue-300 via-white to-purple-200">
+      <div className="background-div flex justify-center gap-4 mb-5 py-4 veg-navs border-b border-gray-200 pb-3 shadow-lg rounded-lg bg-gradient-to-r from-blue-300 via-white to-purple-200">
 
         <button
-          className={`flex items-center gap-5 w-fit pl-3 pr-4 py-2 rounded-full transition transform hover:scale-105 hover:shadow-lg ${foodType === 'Veg' ? 'bg-green-500 text-white' : 'bg-[#EFF0F6] text-heading'}`}
-          type="button"
+          className={`category-btn ${foodType === 'Veg' ? 'active' : ''}`}
           onClick={() => handleFoodTypeClick('Veg')}
-          aria-pressed={foodType === 'Veg'}
         >
-          <img src="https://demo.foodscan.xyz/images/item-type/non-veg.png" alt="Veg" className="h-6" />
+          <img src="https://demo.foodscan.xyz/images/item-type/non-veg.png" alt="Veg" className="food-type-icon" />
           <span className="capitalize text-sm font-medium">Veg</span>
         </button>
 
         <button
-          className={`flex items-center gap-3 w-fit pl-3 pr-4 py-2 rounded-full transition transform hover:scale-105 hover:shadow-lg ${foodType === 'Non-Veg' ? 'bg-red-500 text-white' : 'bg-[#EFF0F6] text-heading'}`}
-          type="button"
+          className={`category-btn ${foodType === 'Non-Veg' ? 'active' : ''}`}
           onClick={() => handleFoodTypeClick('Non-Veg')}
-          aria-pressed={foodType === 'Non-Veg'}
         >
-          <img src="https://demo.foodscan.xyz/images/item-type/veg.png" alt="Non-Veg" className="h-6" />
+          <img src="https://demo.foodscan.xyz/images/item-type/veg.png" alt="Non-Veg" className="food-type-icon" />
           <span className="capitalize text-sm font-medium">Non-Veg</span>
         </button>
       </div>
 
       <Swiper
-        modules={[Navigation, Pagination]} // Enable navigation and pagination if needed
-        direction="horizontal"
+        modules={[Navigation, Pagination]}
         slidesPerView="auto"
         spaceBetween={12}
         className="menu-swiper"
-        style={{ direction: 'ltr', padding: 4 }} // Apply LTR styling
-        pagination={{ clickable: true }} // Enable pagination
-        navigation // Enable navigation arrows
+        style={{ padding: 4 }}
+        pagination={{ clickable: true }}
+        navigation
       >
         {filteredCategories.map((category) => (
           <SwiperSlide key={category} className="!w-fit">
             <button
               onClick={() => handleCategoryClick(category)}
-              className={`w-28 flex flex-col items-center text-center gap-1 p-3 rounded-md border transition duration-200 ease-in-out 
-                ${selectedCategory === category ? 'border-blue-500 bg-blue-500 text-white' : 'border-gray-300 bg-[#F7F7FC] hover:bg-gray-200'}`}
-              aria-pressed={selectedCategory === category}
+              className={`category-btn ${selectedCategory === category ? 'selected' : ''}`}
             >
-              <img 
-                className="h-10 drop-shadow-category mb-1"
-                src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB8N27tkV9kQ8toUQMw26UkRiHaL8W_81Bng&s`} // Ensure this URL is correct
-                alt={category}
-              />
-              <h3 className="text-xs leading-4 whitespace-nowrap overflow-hidden text-ellipsis font-medium font-rubik">
-                {category}
-              </h3>
+              <div className="category-image-wrapper">
+                <img
+                  className="category-image"
+                  src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB8N27tkV9kQ8toUQMw26UkRiHaL8W_81Bng&s`}
+                  alt={category}
+                />
+              </div>
+              <h3 className="category-name">{category}</h3>
             </button>
           </SwiperSlide>
+
         ))}
       </Swiper>
     </div>
   );
 }
 
-export default FoodCategoryFilter;  
+export default FoodCategoryFilter;

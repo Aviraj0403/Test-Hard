@@ -1,10 +1,10 @@
 /* Basic styling for the food menu card */
 .food-menu-card {
     background-color: var(--white);
-    padding: 15px;
+    padding: 20px;
     box-shadow: var(--shadow-2);
     border: 1px solid var(--border-color, var(--cultured));
-    border-radius: 8px;
+    border-radius: 15px; /* Slightly more rounded corners */
     position: relative;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
@@ -15,8 +15,8 @@
 
 /* Hover effect for the card */
 .food-menu-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Slightly larger shadow */
     background-color: var(--light-orange); /* Change card color on hover */
 }
 
@@ -31,9 +31,22 @@
 /* Circular image styling */
 .card-image {
     border-radius: 50%; /* Makes the image circular */
-    width: 100%; /* Ensures the image covers the width of the container */
-    height: 200px; /* Ensures the height is consistent */
+    width: 150px; /* Fixed width for the image */
+    height: 150px; /* Fixed height for the image */
     object-fit: cover; /* Ensures the image covers the area without distortion */
+    margin-bottom: 10px; /* Adds space between the image and the name */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Name styling */
+.card-title {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--black);
 }
 
 /* Badge styling */
@@ -46,6 +59,7 @@
     padding: 5px 10px;
     font-weight: bold;
     border-radius: 5px;
+    font-size: 12px;
 }
 
 /* Order Now button styling */
@@ -57,15 +71,16 @@
     background-color: var(--cinnabar);
     color: var(--white);
     width: 70%;
-    height: 35px;
+    height: 40px; /* Slightly taller button */
     text-align: center;
-    line-height: 35px;
+    line-height: 40px;
     opacity: 0;
     transition: opacity 0.3s, background-color 0.3s, transform 0.3s;
     border: none;
     cursor: pointer;
     border-radius: 20px;
     font-weight: bold;
+    font-size: 1rem; /* Increase font size */
 }
 
 /* Button color on hover */
@@ -83,7 +98,7 @@
 /* Card content styling */
 .card-title {
     margin-bottom: 10px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
@@ -94,12 +109,13 @@
 .price-text {
     color: orange;
     font-weight: bold;
-    font-size: 1.2rem; /* Increase font size */
+    font-size: 1.4rem; /* Increased font size */
 }
 
 .category {
     font-weight: bold;
     text-transform: uppercase;
+    font-size: 0.9rem; /* Slightly larger font */
 }
 
 .del {
@@ -109,18 +125,19 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .food-menu-card {
-        padding: 10px;
+        padding: 15px;
     }
 
     .food-menu-btn {
         width: 80%;
         font-size: 0.9rem;
+        height: 35px;
     }
 }
 
 @media (max-width: 480px) {
     .food-menu-card {
-        padding: 5px;
+        padding: 10px;
     }
 
     .food-menu-btn {
@@ -130,35 +147,109 @@
     }
 }
 
-
+/* Background and category styles */
 .background-div {
-    background-image: url('https://i.pinimg.com/originals/44/ea/09/44ea09cf172b56c1dc379b8522329a51.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border: none,
+    border: none;
 }
 
-.category-div{
-    background-image: url('https://img.freepik.com/premium-photo/food-background-menu-with-spices-culinary-ingredients-dark-stone-background-cooking-concepts-culinary-background-top-view-free-space-your-text_234595-2347.jpg');
+.category-div {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;
-    border: none,
-
+    border: none;
 }
 
-.menu-page{
-    background-image: url('https://img.freepik.com/premium-photo/food-background-menu-with-spices-culinary-ingredients-dark-stone-background-cooking-concepts-culinary-background-top-view-free-space-your-text_234595-2347.jpg');
+.menu-page {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* background-color: transparent; */
-    border: none,
-
+    border: none;
 }
 
-.card-div{
+.card-div {
     border: none;
+}
+/* Updated for circular category image design */
+.category-btn {
+    width: 80px; /* Adjust width for better fit */
+    height: 120px; /* Increase height to accommodate the text below the image */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px; /* Slight rounded corners */
+    border: 2px solid #ccc;
+    background-color: #eff0f6;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    text-align: center; /* Ensure the name is centered below the image */
+}
+
+.category-btn:hover {
+    transform: scale(1.1);
+    background-color: #d3d3d3;
+}
+
+.category-btn.selected {
+    border-color: #4c90f2;
+    background-color: #4c90f2;
+    color: white;
+}
+
+/* Category image styling (circular) */
+.category-image {
+    width: 50px;  /* Make the image slightly bigger */
+    height: 50px; /* Keep the height same as width */
+    border-radius: 50%; /* Circular image */
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Category name styling */
+.category-name {
+    font-size: 14px; /* Slightly larger font size */
+    margin-top: 8px; /* Space between image and name */
+    text-transform: capitalize;
+    font-weight: bold; /* Make name bold for emphasis */
+}
+
+
+
+/* Food Type Button Styling */
+.food-type-btn {
+    background-color: #eff0f6;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.food-type-btn:hover {
+    background-color: #d3d3d3;
+}
+
+.food-type-btn.active {
+    background-color: #4c90f2;
+    color: white;
+}
+
+.food-type-btn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+/* Food type selection (Veg, Non-Veg) */
+.veg-navs {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
