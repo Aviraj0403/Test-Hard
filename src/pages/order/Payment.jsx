@@ -9,7 +9,7 @@ import { addOrderToHistory } from '../user/userSlice';
 
 // Set up the socket connection
 // const socket = io('http://localhost:4000');
-const socket = io('https://backend-obet.onrender.com');
+const socket = io('https://apirestaurant.bytethard.com');
 
 const Payment = () => {
     const dispatch = useDispatch();
@@ -121,7 +121,7 @@ const Payment = () => {
                 razorpay.open();
             } else {
                 // Handle other payment methods like PayPal or Cash
-                const response = await fetch('https://backend-obet.onrender.com/api/orders/create', {
+                const response = await fetch('https://apirestaurant.bytethard.com/api/orders/create', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({

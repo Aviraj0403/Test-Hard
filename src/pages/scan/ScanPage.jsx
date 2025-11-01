@@ -21,7 +21,7 @@ const ScanPage = () => {
     const fetchData = async (restaurantId, tableId) => {
       try {
         const response = await fetch(
-          `https://backend-obet.onrender.com/api/scan?restaurantId=${restaurantId}&tableId=${tableId}`
+          `https://apirestaurant.bytethard.com/api/scan?restaurantId=${restaurantId}&tableId=${tableId}`
         );
         const result = await response.json();
         setData(result);
